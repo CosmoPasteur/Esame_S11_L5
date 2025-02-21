@@ -62,7 +62,7 @@ class Home extends Component {
                   {playlists[section]?.length > 0 ? (
                     playlists[section].map((item, index) => (
                       <div key={index} className="col mb-4">
-                        <div className="card m-auto">
+                        <div className=" m-auto ">
                           <img src={item.album.cover} alt={item.title} className="card-img-top img-fluid" />
                           <div className="card-body">
                             <h5 className="card-title">{item.title}</h5>
