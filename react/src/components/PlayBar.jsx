@@ -6,22 +6,22 @@ class PlayBar extends Component {
     return (
       <Container fluid className="d-flex fixed-bottom bg-container pt-1">
         <Row className="row h-100">
-          <Col lg={10} className="">
+          <Col lg={10} className="d-flex ">
             <div>
               <a href="#">
-                <img src="assets/playerbuttons/shuffle.png" alt="shuffle" />
+                <img src="./src/assets/playerbuttons/shuffle.png" alt="shuffle" />
               </a>
               <a href="#">
-                <img src="assets/playerbuttons/prev.png" alt="prev" />
+                <img src="./src/assets/playerbuttons/prev.png" alt="prev" />
               </a>
               <a href="#">
-                <img src="assets/playerbuttons/play.png" alt="play" />
+                <img src="./src/assets/playerbuttons/play.png" alt="play" />
               </a>
               <a href="#">
-                <img src="assets/playerbuttons/next.png" alt="next" />
+                <img src="./src/assets/playerbuttons/next.png" alt="next" />
               </a>
               <a href="#">
-                <img src="assets/playerbuttons/repeat.png" alt="repeat" />
+                <img src="./src/assets/playerbuttons/repeat.png" alt="repeat" />
               </a>
             </div>
           </Col>
