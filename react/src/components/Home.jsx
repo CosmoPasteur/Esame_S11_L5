@@ -7,6 +7,7 @@ class Home extends Component {
       pop: [],
       hiphop: [],
     },
+    favorites: [], //modifica per i preferiti
   };
 
   fetchData = async () => {
