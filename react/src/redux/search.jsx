@@ -3,13 +3,13 @@ import { useState } from "react";
 function SearchBar() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false); // caricamento
-  const [error, setError] = useState(""); // errore
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // ricerca
   const bestSearch = async () => {
     setLoading(true);
-    setError(""); // Resetta l'errore precedente
+    setError("");
 
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`);
