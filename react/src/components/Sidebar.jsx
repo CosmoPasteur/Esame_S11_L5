@@ -1,7 +1,37 @@
 import { Component } from "react";
-import SearchBar from "../redux/search";
 
 class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: "",
+      results: [],
+      loading: false,
+      error: "",
+    };
+  }
+
+  bestSearch = async () => {
+    this.setState({ loading: true, error: "" });
+
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${this.state.query}`);
+      if (!response.ok) {
+        throw new Error("Errore nella ricerca");
+      }
+      const data = await response.json();
+      this.setState({ results: data.data });
+    } catch (err) {
+      this.setState({ error: err.message });
+    } finally {
+      this.setState({ loading: false });
+    }
+  };
+
+  handleInputChange = (e) => {
+    this.setState({ query: e.target.value });
+  };
+
   render() {
     return (
       <aside className="col col-2">
@@ -35,14 +65,41 @@ class Sidebar extends Component {
                     </a>
                   </li>
                   <li>
-                    <form>
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        this.bestSearch();
+                      }}
+                    >
                       <div className="input-group mt-3">
-                        <input type="text" className="form-control" placeholder="Search" aria-label="Search" />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Search"
+                          aria-label="Search"
+                          value={this.state.query}
+                          onChange={this.handleInputChange}
+                        />
                         <div className="input-group-append">
-                          <button className="btn btn-outline-secondary btn-sm h-100">GO</button>
+                          <button
+                            className="btn btn-outline-secondary btn-sm h-100"
+                            type="button"
+                            onClick={this.bestSearch}
+                            disabled={this.state.loading}
+                          >
+                            GO
+                          </button>
                         </div>
                       </div>
                     </form>
+                    {this.state.error && <p>{this.state.error}</p>}
+                    {this.state.results.length === 0 && !this.state.loading && <p>Nessun risultato trovato.</p>}
+                    {this.state.results.map((song) => (
+                      <div key={song.id}>
+                        <img src={song.album.cover} alt={song.title} />
+                        <p>{song.title}</p>
+                      </div>
+                    ))}
                   </li>
                 </ul>
               </div>
