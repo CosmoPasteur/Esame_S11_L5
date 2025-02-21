@@ -49,7 +49,9 @@ function Sidebar() {
           <button className="btn login-btn" type="button">
             Login
           </button>
-          <a href="#">Cookie Policy</a> | <a href="#"> Privacy</a>
+          <div>
+            <a href="#">Cookie Policy</a> | <a href="#"> Privacy</a>
+          </div>
         </div>
       </nav>
     </aside>
