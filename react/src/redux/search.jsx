@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-function PlayBar() {
-  const [query, setQuery] = useState(""); // ricerca
+function SearchBar() {
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false); // Stato  caricamento
-  const [error, setError] = useState(""); // in caso di errore
+  const [loading, setLoading] = useState(false); // caricamento
+  const [error, setError] = useState(""); // errore
 
-  // Funzione per fare la ricerca
-  const searchSongs = async () => {
+  // ricerca
+  const bestSearch = async () => {
     setLoading(true);
     setError(""); // Resetta l'errore precedente
 
@@ -28,19 +28,14 @@ function PlayBar() {
   return (
     <div>
       <div>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)} // Gestisce il cambio dell'input
-          placeholder="Cerca canzoni..."
-        />
-        <button onClick={searchSongs} disabled={loading}>
+        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Cerca canzoni..." />
+        <button onClick={bestSearch} disabled={loading}>
           {loading ? "Caricamento..." : "Cerca"}
         </button>
       </div>
-      {error && <p>{error}</p>} {/* Mostra l'errore se c'è */}
+      {error && <p>{error}</p>}
       <div>
-        {results.length === 0 && !loading && <p>Nessun risultato trovato.</p>} {/* Se non ci sono risultati */}
+        {results.length === 0 && !loading && <p>Nessun risultato trovato.</p>}
         {results.map((song) => (
           <div key={song.id}>
             <img src={song.album.cover} alt={song.title} />
@@ -52,4 +47,4 @@ function PlayBar() {
   );
 }
 
-export default PlayBar;
+export default SearchBar;

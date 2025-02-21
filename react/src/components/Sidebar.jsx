@@ -1,4 +1,5 @@
 import { Component } from "react";
+import SearchBar from "../redux/search";
 
 class Sidebar extends Component {
   render() {
@@ -34,12 +35,14 @@ class Sidebar extends Component {
                     </a>
                   </li>
                   <li>
-                    <div className="input-group mt-3">
-                      <input type="text" className="form-control" placeholder="Search" aria-label="Search" />
-                      <div className="input-group-append">
-                        <button className="btn btn-outline-secondary btn-sm h-100">GO</button>
+                    <form>
+                      <div className="input-group mt-3">
+                        <input type="text" className="form-control" placeholder="Search" aria-label="Search" />
+                        <div className="input-group-append">
+                          <button className="btn btn-outline-secondary btn-sm h-100">GO</button>
+                        </div>
                       </div>
-                    </div>
+                    </form>
                   </li>
                 </ul>
               </div>
