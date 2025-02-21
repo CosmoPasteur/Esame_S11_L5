@@ -5,8 +5,8 @@ class PlayBar extends Component {
   render() {
     return (
       <Container fluid className="d-flex fixed-bottom bg-container pt-1">
-        <Row className="row h-100">
-          <Col lg={10} className="d-flex ">
+        <Row className="h-100">
+          <Col lg={10} className="d-flex justify-content-center align-items-center">
             <div>
               <a href="#">
                 <img src="./src/assets/playerbuttons/shuffle.png" alt="shuffle" />
