@@ -50,7 +50,7 @@ class Home extends Component {
   };
 
   render() {
-    const { playlists, isFavorite } = this.state;
+    const { playlists } = this.state;
 
     return (
       <main className="col-12 col-md-9 offset-md-3 mainPage">
@@ -84,7 +84,7 @@ class Home extends Component {
                             <button
                               className="btn"
                               onClick={() => this.toggleFavorite(item)}
-                              style={{ border: "none", background: "transparent", cursor: "pointer" }}
+                              style={{ border: "none", background: "transparent", cursor: "pointer" }} //Cuore
                             >
                               {this.state.favorites.some((fav) => fav.id === item.id) ? (
                                 <FaHeart color="red" size={20} />
