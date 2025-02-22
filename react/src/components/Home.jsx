@@ -78,7 +78,7 @@ class Home extends Component {
                       <div key={item.id} className="col mb-4">
                         <div className=" m-auto ">
                           <img src={item.album.cover} alt={item.title} className="card-img-top img-fluid" />
-                          <div className="card-body d-flex">
+                          <div className="card-body d-flex justify-content-between">
                             <div>
                               <h5 className="card-title">{item.title}</h5>
                               <p className="card-text">{item.artist.name}</p>
