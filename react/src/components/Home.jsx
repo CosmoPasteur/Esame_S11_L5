@@ -74,15 +74,17 @@ class Home extends Component {
                   id={`${section}Section`}
                 >
                   {playlists[section]?.length > 0 ? (
-                    playlists[section].slice(0, 6).map((item) => (
+                    playlists[section].slice(0, 8).map((item) => (
                       <div key={item.id} className="col mb-4">
                         <div className=" m-auto ">
                           <img src={item.album.cover} alt={item.title} className="card-img-top img-fluid" />
-                          <div className="card-body">
-                            <h5 className="card-title">{item.title}</h5>
-                            <p className="card-text">{item.artist.name}</p>
+                          <div className="card-body d-flex">
+                            <div>
+                              <h5 className="card-title">{item.title}</h5>
+                              <p className="card-text">{item.artist.name}</p>
+                            </div>
                             <button
-                              className="btn"
+                              className="btn d-flex"
                               onClick={() => this.toggleFavorite(item)}
                               style={{ border: "none", background: "transparent", cursor: "pointer" }} //Cuore
                             >
