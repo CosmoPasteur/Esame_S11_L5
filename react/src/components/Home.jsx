@@ -74,7 +74,7 @@ class Home extends Component {
                   id={`${section}Section`}
                 >
                   {playlists[section]?.length > 0 ? (
-                    playlists[section].map((item) => (
+                    playlists[section].slice(0, 6).map((item) => (
                       <div key={item.id} className="col mb-4">
                         <div className=" m-auto ">
                           <img src={item.album.cover} alt={item.title} className="card-img-top img-fluid" />
