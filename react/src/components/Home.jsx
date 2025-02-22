@@ -13,9 +13,9 @@ class Home extends Component {
 
   fetchData = async () => {
     try {
-      const rockResponse = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=rock`);
-      const popResponse = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=pop`);
-      const hiphopResponse = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=hiphop`);
+      const rockResponse = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=queen`);
+      const popResponse = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=katyperry`);
+      const hiphopResponse = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem`);
 
       const rockData = await rockResponse.json();
       const popData = await popResponse.json();
