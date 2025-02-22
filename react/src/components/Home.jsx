@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa"; //icon
 
 class Home extends Component {
   state = {
@@ -7,7 +8,7 @@ class Home extends Component {
       pop: [],
       hiphop: [],
     },
-    favorites: [], //modifica per i preferiti
+    favorites: [], //Aggiunta stato per i preferiti
   };
 
   fetchData = async () => {
@@ -36,8 +37,20 @@ class Home extends Component {
     this.fetchData();
   }
 
+  toggleFavorite = (song) => {
+    this.setState((prevState) => {
+      const isFavorite = prevState.favorites.some((fav) => fav.id === song.id);
+
+      return {
+        favorites: isFavorite
+          ? prevState.favorites.filter((fav) => fav.id !== song.id)
+          : [...prevState.favorites, song],
+      };
+    });
+  };
+
   render() {
-    const { playlists } = this.state;
+    const { playlists, isFavorite } = this.state;
 
     return (
       <main className="col-12 col-md-9 offset-md-3 mainPage">
@@ -61,13 +74,24 @@ class Home extends Component {
                   id={`${section}Section`}
                 >
                   {playlists[section]?.length > 0 ? (
-                    playlists[section].map((item, index) => (
-                      <div key={index} className="col mb-4">
+                    playlists[section].map((item) => (
+                      <div key={item.id} className="col mb-4">
                         <div className=" m-auto ">
                           <img src={item.album.cover} alt={item.title} className="card-img-top img-fluid" />
                           <div className="card-body">
                             <h5 className="card-title">{item.title}</h5>
                             <p className="card-text">{item.artist.name}</p>
+                            <button
+                              className="btn"
+                              onClick={() => this.toggleFavorite(item)}
+                              style={{ border: "none", background: "transparent", cursor: "pointer" }}
+                            >
+                              {this.state.favorites.some((fav) => fav.id === item.id) ? (
+                                <FaHeart color="red" size={20} />
+                              ) : (
+                                <FaRegHeart color="gray" size={20} />
+                              )}
+                            </button>
                           </div>
                         </div>
                       </div>
